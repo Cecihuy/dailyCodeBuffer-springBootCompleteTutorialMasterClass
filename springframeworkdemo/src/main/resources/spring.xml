@@ -8,5 +8,6 @@
         ">
 
     <bean id="doctor" class="demo.Doctor"></bean>
+    <bean id="nurse" class="demo.Nurse"></bean>
 
 </beans>
