@@ -1,11 +1,11 @@
 package demo;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        Nurse staff = applicationContext.getBean(Nurse.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfig.class);
+        Staff staff = applicationContext.getBean(Nurse.class);
         staff.assist();
     }
 }
