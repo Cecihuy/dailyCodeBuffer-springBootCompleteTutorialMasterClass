@@ -7,7 +7,9 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
         ">
 
-    <bean id="doctor" class="demo.Doctor"></bean>
+    <bean id="doctor" class="demo.Doctor">
+        <property name="qualification" value="MBBS"></property>
+    </bean>
     <bean id="nurse" class="demo.Nurse"></bean>
 
 </beans>
