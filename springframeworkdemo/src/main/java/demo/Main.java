@@ -8,5 +8,6 @@ public class Main {
         Doctor staff = applicationContext.getBean(Doctor.class);
         staff.assist();
         System.out.println(staff.getQualification());
+        System.out.println(staff.getNurse().getTrial());
     }
 }
