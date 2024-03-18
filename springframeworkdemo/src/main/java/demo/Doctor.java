@@ -1,8 +1,13 @@
 package demo;
+import org.springframework.beans.factory.BeanNameAware;
 
-public class Doctor implements Staff {
+public class Doctor implements Staff, BeanNameAware {
     private String qualification;
 
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("BeanNameAware setBeanName method is called");
+    }
     public void assist(){
         System.out.println("Doctor is assisting");
     }
