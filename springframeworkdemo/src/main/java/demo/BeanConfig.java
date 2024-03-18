@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Scope;
 @ComponentScan(basePackages = "demo")
 public class BeanConfig {
     @Bean()
-    @Scope(scopeName = "singleton")
+    @Scope(scopeName = "prototype")
     public Doctor doctor(){
         return new Doctor();
     }

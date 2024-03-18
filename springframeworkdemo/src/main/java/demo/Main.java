@@ -9,8 +9,8 @@ public class Main {
         doctor.assist();
         doctor.setQualification("MBBS");
         System.out.println(doctor);
-        
-        /* second time call for singleton scope */
+
+        /* second time call for prototype scope */
         Doctor doctor2 = applicationContext.getBean(Doctor.class);
         System.out.println(doctor2);
     }
