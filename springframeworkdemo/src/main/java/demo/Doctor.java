@@ -1,9 +1,14 @@
 package demo;
 import org.springframework.beans.factory.BeanNameAware;
+import jakarta.annotation.PostConstruct;
 
 public class Doctor implements Staff, BeanNameAware {
     private String qualification;
-
+    
+    @PostConstruct
+    public void postConstruct(){
+        System.out.println("Post Construct Method is called");
+    }
     @Override
     public void setBeanName(String name) {
         System.out.println("BeanNameAware setBeanName method is called");
