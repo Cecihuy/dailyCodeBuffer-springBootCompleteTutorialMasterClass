@@ -6,6 +6,6 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfig.class);
         ShoppingCart cart = applicationContext.getBean(ShoppingCart.class);
-        cart.checkout();
+        cart.checkout("CANCELLED");
     }
 }
