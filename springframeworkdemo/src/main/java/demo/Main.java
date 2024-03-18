@@ -5,7 +5,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfig.class);
-        Staff staff = applicationContext.getBean(Nurse.class);
-        staff.assist();
+        Doctor doctor = applicationContext.getBean(Doctor.class);
+        doctor.assist();
+        doctor.setQualification("MBBS");
+        System.out.println(doctor);
+        
+        /* second time call for singleton scope */
+        Doctor doctor2 = applicationContext.getBean(Doctor.class);
+        System.out.println(doctor2);
     }
 }
