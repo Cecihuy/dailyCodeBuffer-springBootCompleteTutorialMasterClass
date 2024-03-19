@@ -1,0 +1,11 @@
+{
+    "departmentName":"IT",
+    "departmentAddress":"Bangalore",
+    "departmentCode":"IT-06"
+}
+
+{
+    "departmentName":"CE",
+    "departmentAddress":"Bangalore",
+    "departmentCode":"CE-07"
+}
