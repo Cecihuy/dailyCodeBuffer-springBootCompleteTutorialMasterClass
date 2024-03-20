@@ -1,6 +1,7 @@
 package com.dailycodebuffer.springboottutorial.controller;
 import com.dailycodebuffer.springboottutorial.entity.Department;
 import com.dailycodebuffer.springboottutorial.service.DepartmentService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,5 +16,9 @@ public class DepartmentController {
     @RequestMapping(path = "/departments", method = RequestMethod.POST)
     public Department saveDepartment(@RequestBody Department department){
         return departmentService.saveDepartment(department);
+    }
+    @RequestMapping(path = "/departments", method = RequestMethod.GET)
+    public List<Department> fetchDepartmentList(){
+        return departmentService.fetchDepartmentList();
     }
 }

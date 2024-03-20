@@ -9,3 +9,9 @@
     "departmentAddress":"Bangalore",
     "departmentCode":"CE-07"
 }
+
+{
+    "departmentName":"EEE",
+    "departmentAddress":"Ahmedabad",
+    "departmentCode":"EEE-01"
+}
