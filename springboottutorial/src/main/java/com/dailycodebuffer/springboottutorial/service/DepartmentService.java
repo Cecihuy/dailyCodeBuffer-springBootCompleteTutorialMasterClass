@@ -7,4 +7,5 @@ public interface DepartmentService {
     List<Department> fetchDepartmentList();
     Department findDepartmentById(Integer deptId);
     void deleteDepartmentById(Integer deptId);
+    Department updateDepartment(Department department, Integer deptId);
 }
