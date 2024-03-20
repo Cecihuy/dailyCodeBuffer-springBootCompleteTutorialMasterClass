@@ -8,4 +8,5 @@ public interface DepartmentService {
     Department findDepartmentById(Integer deptId);
     void deleteDepartmentById(Integer deptId);
     Department updateDepartment(Department department, Integer deptId);
+    Department fetchDepartmentByName(String deptName);
 }

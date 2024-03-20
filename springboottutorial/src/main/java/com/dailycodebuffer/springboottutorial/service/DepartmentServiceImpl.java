@@ -40,5 +40,9 @@ public class DepartmentServiceImpl implements DepartmentService {
             departmentLocal.setDepartmentCode(department.getDepartmentCode());
         }
         return departmentRepository.save(departmentLocal);
-    }    
+    }
+    @Override
+    public Department fetchDepartmentByName(String deptName) {
+        return departmentRepository.findByDepartmentNameIgnoreCase(deptName);
+    }
 }
