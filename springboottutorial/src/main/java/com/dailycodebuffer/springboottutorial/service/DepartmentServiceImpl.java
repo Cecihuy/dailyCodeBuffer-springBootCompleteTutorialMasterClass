@@ -22,4 +22,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department findDepartmentById(Integer deptId) {
         return departmentRepository.findById(deptId).get();
     }
+    @Override
+    public void deleteDepartmentById(Integer deptId) {
+        departmentRepository.deleteById(deptId);
+    }    
 }

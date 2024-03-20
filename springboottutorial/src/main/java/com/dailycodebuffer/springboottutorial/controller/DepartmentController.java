@@ -26,4 +26,9 @@ public class DepartmentController {
     public Department findDepartmentById(@PathVariable(name = "id") Integer deptId){
         return departmentService.findDepartmentById(deptId);
     }
+    @RequestMapping(path = "/departments/{id}", method = RequestMethod.DELETE)
+    public String deleteDepartmentById(@PathVariable(name = "id") Integer deptId){
+        departmentService.deleteDepartmentById(deptId);
+        return "Department deleted successfully!!!";
+    }
 }

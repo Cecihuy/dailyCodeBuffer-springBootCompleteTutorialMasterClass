@@ -6,4 +6,5 @@ public interface DepartmentService {
     Department saveDepartment(Department department);
     List<Department> fetchDepartmentList();
     Department findDepartmentById(Integer deptId);
+    void deleteDepartmentById(Integer deptId);
 }
