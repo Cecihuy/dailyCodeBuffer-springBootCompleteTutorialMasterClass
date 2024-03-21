@@ -1,8 +1,9 @@
 package com.dailycodebuffer.springboottutorial.controller;
 import com.dailycodebuffer.springboottutorial.entity.Department;
 import com.dailycodebuffer.springboottutorial.service.DepartmentService;
-import jakarta.validation.Valid;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +16,16 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
+    private final Logger LOGGER =  LoggerFactory.getLogger(DepartmentController.class);
+
     @RequestMapping(path = "/departments", method = RequestMethod.POST)
-    public Department saveDepartment(@Valid @RequestBody Department department){
+    public Department saveDepartment(@RequestBody Department department){
+        LOGGER.info("Inside saveDepartment of DepartmentController");
         return departmentService.saveDepartment(department);
     }
     @RequestMapping(path = "/departments", method = RequestMethod.GET)
     public List<Department> fetchDepartmentList(){
+        LOGGER.info("Inside fetchDepartmentList of DepartmentController");
         return departmentService.fetchDepartmentList();
     }
     @RequestMapping(path = "/departments/{id}", method = RequestMethod.GET)
