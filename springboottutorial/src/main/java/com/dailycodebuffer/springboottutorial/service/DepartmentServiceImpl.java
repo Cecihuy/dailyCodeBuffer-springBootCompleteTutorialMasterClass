@@ -1,9 +1,11 @@
 package com.dailycodebuffer.springboottutorial.service;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dailycodebuffer.springboottutorial.entity.Department;
+import com.dailycodebuffer.springboottutorial.error.DepartmentNotFoundException;
 import com.dailycodebuffer.springboottutorial.repository.DepartmentRepository;
 
 @Service
@@ -20,8 +22,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.findAll();
     }
     @Override
-    public Department findDepartmentById(Integer deptId) {
-        return departmentRepository.findById(deptId).get();
+    public Department findDepartmentById(Integer deptId) throws DepartmentNotFoundException{
+        Optional<Department> department = departmentRepository.findById(deptId);
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department not available");
+        }
+        return department.get();
     }
     @Override
     public void deleteDepartmentById(Integer deptId) {

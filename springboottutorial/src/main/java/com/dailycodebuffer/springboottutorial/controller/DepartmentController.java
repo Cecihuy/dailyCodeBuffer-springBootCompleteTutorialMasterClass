@@ -1,5 +1,6 @@
 package com.dailycodebuffer.springboottutorial.controller;
 import com.dailycodebuffer.springboottutorial.entity.Department;
+import com.dailycodebuffer.springboottutorial.error.DepartmentNotFoundException;
 import com.dailycodebuffer.springboottutorial.service.DepartmentService;
 import java.util.List;
 import org.slf4j.Logger;
@@ -29,7 +30,7 @@ public class DepartmentController {
         return departmentService.fetchDepartmentList();
     }
     @RequestMapping(path = "/departments/{id}", method = RequestMethod.GET)
-    public Department findDepartmentById(@PathVariable(name = "id") Integer deptId){
+    public Department findDepartmentById(@PathVariable(name = "id") Integer deptId) throws DepartmentNotFoundException{
         return departmentService.findDepartmentById(deptId);
     }
     @RequestMapping(path = "/departments/{id}", method = RequestMethod.DELETE)
