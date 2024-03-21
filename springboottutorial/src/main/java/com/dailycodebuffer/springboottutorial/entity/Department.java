@@ -1,14 +1,28 @@
 package com.dailycodebuffer.springboottutorial.entity;
+import org.hibernate.validator.constraints.Length;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Negative;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer departmentId;
+    @NotBlank(message = "Please add department name")
+    // @Length(min = 1, max = 3, message = "out of bound")
+    // @Size
+    // @Email
+    // @Positive
+    // @Negative
+    // @PositiveOrZero
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;

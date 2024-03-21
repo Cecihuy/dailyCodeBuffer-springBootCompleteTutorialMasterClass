@@ -1,6 +1,7 @@
 package com.dailycodebuffer.springboottutorial.controller;
 import com.dailycodebuffer.springboottutorial.entity.Department;
 import com.dailycodebuffer.springboottutorial.service.DepartmentService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @RequestMapping(path = "/departments", method = RequestMethod.POST)
-    public Department saveDepartment(@RequestBody Department department){
+    public Department saveDepartment(@Valid @RequestBody Department department){
         return departmentService.saveDepartment(department);
     }
     @RequestMapping(path = "/departments", method = RequestMethod.GET)
