@@ -1,5 +1,6 @@
 package com.dailycodebuffer.springdatajpatutorial.entity;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,22 +34,18 @@ public class Student {
     private String lastName;
     @Column(name = "email_address", nullable = false)
     private String emailId;
-    private String guardianName;
-    private String guardianEmail;
-    private String guardianMobile;
-
+    @Embedded
+    private Guardian guardian;
+    
     public Student() {
         super();
     }
-    public Student(Integer studentId, String firstName, String lastName, String emailId, String guardianName,
-            String guardianEmail, String guardianMobile) {
+    public Student(Integer studentId, String firstName, String lastName, String emailId, Guardian guardian) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
-        this.guardianName = guardianName;
-        this.guardianEmail = guardianEmail;
-        this.guardianMobile = guardianMobile;
+        this.guardian = guardian;
     }
     public Integer getStudentId() {
         return studentId;
@@ -74,28 +71,15 @@ public class Student {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-    public String getGuardianName() {
-        return guardianName;
+    public Guardian getGuardian() {
+        return guardian;
     }
-    public void setGuardianName(String guardianName) {
-        this.guardianName = guardianName;
-    }
-    public String getGuardianEmail() {
-        return guardianEmail;
-    }
-    public void setGuardianEmail(String guardianEmail) {
-        this.guardianEmail = guardianEmail;
-    }
-    public String getGuardianMobile() {
-        return guardianMobile;
-    }
-    public void setGuardianMobile(String guardianMobile) {
-        this.guardianMobile = guardianMobile;
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
     }
     @Override
     public String toString() {
         return "Student [studentId=" + studentId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId="
-                + emailId + ", guardianName=" + guardianName + ", guardianEmail=" + guardianEmail + ", guardianMobile="
-                + guardianMobile + "]";
-    }
+                + emailId + ", guardian=" + guardian + "]";
+    }    
 }
