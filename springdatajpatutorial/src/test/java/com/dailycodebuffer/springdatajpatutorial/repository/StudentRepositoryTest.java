@@ -3,7 +3,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.dailycodebuffer.springdatajpatutorial.entity.Guardian;
 import com.dailycodebuffer.springdatajpatutorial.entity.Student;
 
@@ -11,24 +10,7 @@ import com.dailycodebuffer.springdatajpatutorial.entity.Student;
 public class StudentRepositoryTest {
     @Autowired
     private StudentRepository studentRepository;
-
-    @Test
-    void saveStudent(){
-        Student student = new Student();
-        student.setEmailId("shabbir@gmail.com");
-        student.setFirstName("Shabbir");
-        student.setLastName("Dawoodi");
-        // student.setGuardianName("Nikhil");
-        // student.setGuardianEmail("nikhil@gmail.com");
-        // student.setGuardianMobile("99999");
-
-        studentRepository.save(student);
-    }
-    @Test
-    void printAllStudent(){
-        List<Student> students = studentRepository.findAll();
-        System.out.println("student list = " + students);
-    }
+    
     @Test
     void saveStudentWithGuardian(){
         Guardian guardian = new Guardian();
@@ -43,5 +25,30 @@ public class StudentRepositoryTest {
         student.setGuardian(guardian);
 
         studentRepository.save(student);
+    }
+    @Test
+    void printAllStudent(){
+        List<Student> students = studentRepository.findAll();
+        System.out.println("student list = " + students);
+    }
+    @Test
+    void printStudentByFirstName(){
+        List<Student> students = studentRepository.findByFirstName("Shivam");
+        System.out.println("students = " + students);
+    }
+    @Test
+    void printStudentByFirstNameContaining(){
+        List<Student> students = studentRepository.findByFirstNameContaining("Sh");
+        System.out.println("students = " + students);
+    }
+    @Test
+    void printStudentByLastNameNotNull(){
+        List<Student> students = studentRepository.findByLastNameNotNull();
+        System.out.println("students = " + students);
+    }
+    @Test
+    void printStudentBaseOnGuardianName(){
+        List<Student> students = studentRepository.findByGuardianName("Nikhil");
+        System.out.println("students = " + students);
     }
 }
