@@ -24,7 +24,7 @@ public class TeacherRepositoryTest {
         Teacher teacher = new Teacher();
         teacher.setFirstName("Qutub");
         teacher.setLastName("Khan");
-        teacher.setCourses(List.of(courseDBA, courseJava));
+        //teacher.setCourses(List.of(courseDBA, courseJava));
 
         teacherRepository.save(teacher);
     }

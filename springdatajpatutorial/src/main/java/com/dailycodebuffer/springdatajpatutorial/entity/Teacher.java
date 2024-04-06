@@ -24,21 +24,22 @@ public class Teacher {
     private Integer teacherId;
     private String firstName;
     private String lastName;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(
-        name = "teacher_id",
-        referencedColumnName = "teacherId"
-    )
-    private List<Course> courses;
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(
+    //     name = "teacher_id",
+    //     referencedColumnName = "teacherId"
+    // )
+    // private List<Course> courses;
 
     public Teacher() {
         super();
     }
-    public Teacher(Integer teacherId, String firstName, String lastName, List<Course> courses) {
+    public Teacher(Integer teacherId, String firstName, String lastName //, List<Course> courses
+        ) {
         this.teacherId = teacherId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.courses = courses;
+        // this.courses = courses;
     }
     public Integer getTeacherId() {
         return teacherId;
@@ -58,18 +59,18 @@ public class Teacher {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public List<Course> getCourses() {
-        return courses;
-    }
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
+    // public List<Course> getCourses() {
+    //     return courses;
+    // }
+    // public void setCourses(List<Course> courses) {
+    //     this.courses = courses;
+    // }
     @Override
     public String toString() {
         return "Teacher [teacherId=" + teacherId + 
             ", firstName=" + firstName + 
             ", lastName=" + lastName + 
-            ", courses=" + courses + 
+            // ", courses=" + courses + 
             "]";
     }
 }

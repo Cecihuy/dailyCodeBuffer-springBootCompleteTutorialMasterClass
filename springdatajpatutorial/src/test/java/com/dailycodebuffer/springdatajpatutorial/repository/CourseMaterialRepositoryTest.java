@@ -19,8 +19,7 @@ public class CourseMaterialRepositoryTest {
 
         CourseMaterial courseMaterial = new CourseMaterial();
         courseMaterial.setUrl("www.dailycodebuffer.com");
-        /* uncomment line below!!! */
-        //courseMaterial.setCourse(course);
+        courseMaterial.setCourse(course);
 
         courseMaterialRepository.save(courseMaterial);
     }

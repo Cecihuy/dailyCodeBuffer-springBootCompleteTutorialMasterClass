@@ -1,8 +1,11 @@
 package com.dailycodebuffer.springdatajpatutorial.entity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
@@ -23,18 +26,22 @@ public class Course {
     private Integer credit;
     @OneToOne(mappedBy = "course")
     private CourseMaterial courseMaterial;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "teacherId")
+    private Teacher teacher;
 
     public Course() {
         super();
     }
-    public Integer getCourseId() {
-        return courseId;
-    }
-    public Course(Integer courseId, String title, Integer credit, CourseMaterial courseMaterial) {
+    public Course(Integer courseId, String title, Integer credit, CourseMaterial courseMaterial, Teacher teacher) {
         this.courseId = courseId;
         this.title = title;
         this.credit = credit;
         this.courseMaterial = courseMaterial;
+        this.teacher = teacher;
+    }
+    public Integer getCourseId() {
+        return courseId;
     }
     public void setCourseId(Integer courseId) {
         this.courseId = courseId;
@@ -57,12 +64,19 @@ public class Course {
     public void setCourseMaterial(CourseMaterial courseMaterial) {
         this.courseMaterial = courseMaterial;
     }
+    public Teacher getTeacher() {
+        return teacher;
+    }
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
     @Override
     public String toString() {
         return "Course [courseId=" + courseId + 
             ", title=" + title + 
             ", credit=" + credit + 
             ", courseMaterial=" + courseMaterial + 
+            ", teacher=" + teacher + 
             "]";
     }
 }
