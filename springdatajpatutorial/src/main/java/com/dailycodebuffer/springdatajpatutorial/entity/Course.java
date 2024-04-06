@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -20,17 +21,20 @@ public class Course {
     private Integer courseId;
     private String title;
     private Integer credit;
+    @OneToOne(mappedBy = "course")
+    private CourseMaterial courseMaterial;
 
     public Course() {
         super();
     }
-    public Course(Integer courseId, String title, Integer credit) {
+    public Integer getCourseId() {
+        return courseId;
+    }
+    public Course(Integer courseId, String title, Integer credit, CourseMaterial courseMaterial) {
         this.courseId = courseId;
         this.title = title;
         this.credit = credit;
-    }
-    public Integer getCourseId() {
-        return courseId;
+        this.courseMaterial = courseMaterial;
     }
     public void setCourseId(Integer courseId) {
         this.courseId = courseId;
@@ -47,8 +51,18 @@ public class Course {
     public void setCredit(Integer credit) {
         this.credit = credit;
     }
+    public CourseMaterial getCourseMaterial() {
+        return courseMaterial;
+    }
+    public void setCourseMaterial(CourseMaterial courseMaterial) {
+        this.courseMaterial = courseMaterial;
+    }
     @Override
     public String toString() {
-        return "Course [courseId=" + courseId + ", title=" + title + ", credit=" + credit + "]";
+        return "Course [courseId=" + courseId + 
+            ", title=" + title + 
+            ", credit=" + credit + 
+            ", courseMaterial=" + courseMaterial + 
+            "]";
     }
 }
