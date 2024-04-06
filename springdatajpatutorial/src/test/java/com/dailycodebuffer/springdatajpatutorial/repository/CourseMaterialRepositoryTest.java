@@ -14,12 +14,13 @@ public class CourseMaterialRepositoryTest {
     @Test
     void saveCourseMaterial(){
         Course course = new Course();
-        course.setTitle("DSA");
+        course.setTitle(".NET");
         course.setCredit(6);
 
         CourseMaterial courseMaterial = new CourseMaterial();
-        courseMaterial.setUrl("www.google.com");
-        courseMaterial.setCourse(course);
+        courseMaterial.setUrl("www.dailycodebuffer.com");
+        /* uncomment line below!!! */
+        //courseMaterial.setCourse(course);
 
         courseMaterialRepository.save(courseMaterial);
     }
