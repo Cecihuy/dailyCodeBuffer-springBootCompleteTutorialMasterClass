@@ -1,4 +1,5 @@
 package com.dailycodebuffer.springdatajpatutorial.repository;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,5 +22,10 @@ public class CourseMaterialRepositoryTest {
         courseMaterial.setCourse(course);
 
         courseMaterialRepository.save(courseMaterial);
+    }
+    @Test
+    void printAllCourseMaterials(){
+        List<CourseMaterial> courseMaterials = courseMaterialRepository.findAll();
+        System.out.println("courseMaterials = " + courseMaterials);
     }
 }
