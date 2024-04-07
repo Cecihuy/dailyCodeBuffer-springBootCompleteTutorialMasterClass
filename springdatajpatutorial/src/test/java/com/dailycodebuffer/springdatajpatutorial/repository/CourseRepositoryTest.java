@@ -50,10 +50,15 @@ public class CourseRepositoryTest {
         Pageable sortByTitle = PageRequest.of(0, 2, Sort.by("title"));
         Pageable sortByCreditDesc = PageRequest.of(0, 2, Sort.by("credit").descending());
         Pageable sortByTitleAndCreditDesc = PageRequest.of(0, 2, Sort.by("title").descending().and(Sort.by("credit")));
-
         List<Course> courses = courseRepository.findAll(sortByTitleAndCreditDesc).getContent();
 
         System.out.println("courses = " + courses);
-
+    }
+    @Test
+    void printFindByTitleContaining(){
+        Pageable firstPageTenRecords = PageRequest.of(0, 10);
+        List<Course> courses = courseRepository.findByTitleContaining("D", firstPageTenRecords).getContent();
+        
+        System.out.println("courses = " + courses);
     }
 }
