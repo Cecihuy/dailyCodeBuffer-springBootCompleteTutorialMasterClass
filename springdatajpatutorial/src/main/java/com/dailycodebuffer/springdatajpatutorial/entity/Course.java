@@ -1,10 +1,14 @@
 package com.dailycodebuffer.springdatajpatutorial.entity;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
@@ -21,24 +25,39 @@ public class Course {
         strategy = GenerationType.SEQUENCE,
         generator = "course_sequence"
     )
-    private Integer courseId;
+        private Integer courseId;
     private String title;
     private Integer credit;
     @OneToOne(mappedBy = "course")
-    private CourseMaterial courseMaterial;
+        private CourseMaterial courseMaterial;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher_id", referencedColumnName = "teacherId")
-    private Teacher teacher;
+        private Teacher teacher;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "student_course_map",
+        joinColumns = @JoinColumn(
+            name = "course_id",
+            referencedColumnName = "courseId"
+        ),
+        inverseJoinColumns = @JoinColumn(
+            name = "student_id",
+            referencedColumnName = "studentId"
+        )
+    )
+        private List<Student> students;
 
     public Course() {
         super();
     }
-    public Course(Integer courseId, String title, Integer credit, CourseMaterial courseMaterial, Teacher teacher) {
+    public Course(Integer courseId, String title, Integer credit, CourseMaterial courseMaterial, Teacher teacher,
+            List<Student> students) {
         this.courseId = courseId;
         this.title = title;
         this.credit = credit;
         this.courseMaterial = courseMaterial;
         this.teacher = teacher;
+        this.students = students;
     }
     public Integer getCourseId() {
         return courseId;
@@ -70,6 +89,12 @@ public class Course {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+    public List<Student> getStudents() {
+        return students;
+    }
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
     @Override
     public String toString() {
         return "Course [courseId=" + courseId + 
@@ -77,6 +102,12 @@ public class Course {
             ", credit=" + credit + 
             ", courseMaterial=" + courseMaterial + 
             ", teacher=" + teacher + 
-            "]\n";
+            ", students=" + students + 
+            "]";
+    }
+
+    public void addStudents(Student student){
+        if(students == null) students = new ArrayList<>();
+        students.add(student);
     }
 }

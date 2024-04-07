@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-
 import com.dailycodebuffer.springdatajpatutorial.entity.Course;
+import com.dailycodebuffer.springdatajpatutorial.entity.Student;
 import com.dailycodebuffer.springdatajpatutorial.entity.Teacher;
 
 @SpringBootTest
@@ -60,5 +60,25 @@ public class CourseRepositoryTest {
         List<Course> courses = courseRepository.findByTitleContaining("D", firstPageTenRecords).getContent();
         
         System.out.println("courses = " + courses);
+    }
+    @Test
+    void saveCourseWithStudentAndTeacher(){
+        Teacher teacher = new Teacher();
+        teacher.setFirstName("Lizze");
+        teacher.setLastName("Morgan");
+
+        Student student = new Student();
+        student.setFirstName("Abhishek");
+        student.setLastName("Singh");
+        student.setEmailId("abhishek@gmail.com");
+
+        Course course = new Course();
+        course.setTitle("AI");
+        course.setCredit(12);
+        course.setTeacher(teacher);
+
+        course.addStudents(student);
+
+        courseRepository.save(course);
     }
 }
