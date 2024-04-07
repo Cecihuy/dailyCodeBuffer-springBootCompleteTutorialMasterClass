@@ -77,6 +77,6 @@ public class Course {
             ", credit=" + credit + 
             ", courseMaterial=" + courseMaterial + 
             ", teacher=" + teacher + 
-            "]";
+            "]\n";
     }
 }
